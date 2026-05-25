@@ -1,124 +1,74 @@
 <?php
 session_start();
+include 'koneksi.php';
+
 $user = $_SESSION['username'];
+
+$query = mysqli_query($koneksi, "SELECT * FROM product");
 ?>
 
 <!DOCTYPE html>
 <html>
+
 <head>
-
     <title>Menu</title>
-
     <link rel="stylesheet" href="assets/css/style.css">
-
     <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
+
 <body>
+    <div class="hp">
 
-<div class="hp">
+        <div class="header">
 
-    <div class="header">
+            <i class="fa fa-bars"></i>
 
-        <i class="fa fa-bars"></i>
+            <i class="fa fa-bell notif"></i>
 
-        <a href="logout.php" class="logout">
-            <i class="fa fa-right-from-bracket"></i>
-        </a>
-
-        <h2>
-            Hi, <?php echo $user; ?>
-        </h2>
-
-    </div>
-
-    <div class="menu">
-
-        <!-- MIE DJAWA -->
-        <a href="detail.php" class="card">
-
-            <img src="assets/miejawa.png">
-
-            <div class="isi">
-
-                <h3>Mie Djawa</h3>
-
-                <p>
-                    Mie gurih khas jawa
-                </p>
-
-                <div class="harga">
-                    Rp. 50.000
-                </div>
-
-            </div>
-
-            <i class="fa fa-chevron-right panah"></i>
-
-        </a>
-
-        <!-- ICED CHOCOLATE -->
-        <div class="card">
-
-            <img src="assets/icedchoco.png">
-
-            <div class="isi">
-
-                <h3>Iced Chocolate</h3>
-
-                <p>
-                    Minuman coklat dingin
-                </p>
-
-                <div class="harga">
-                    Rp. 25.000
-                </div>
-
-            </div>
-
-            <i class="fa fa-chevron-right panah"></i>
-
+            <h2>
+                Hi, <?php echo $user; ?>
+            </h2>
         </div>
 
-        <!-- SINGKONG -->
-        <div class="card">
+        <div class="menu">
+            <?php while ($data = mysqli_fetch_assoc($query)) { ?>
 
-            <img src="assets/singkong.png">
+                <a href="detail.php?id=<?php echo $data['id']; ?>" class="card">
 
-            <div class="isi">
+                    <img src="assets/<?php echo $data['gambar']; ?>">
 
-                <h3>Singkong Crispy</h3>
+                    <div class="isi">
 
-                <p>
-                    Cemilan renyah gurih
-                </p>
+                        <h3><?php echo $data['nama_product']; ?></h3>
 
-                <div class="harga">
-                    Rp. 20.000
-                </div>
+                        <p><?php echo $data['deskripsi']; ?></p>
 
-            </div>
+                        <div class="harga">
+                            Rp. <?php echo number_format($data['harga']); ?>
+                        </div>
+                    </div>
+                    <i class="fa fa-chevron-right panah"></i>
+                </a>
 
-            <i class="fa fa-chevron-right panah"></i>
-
+            <?php } ?>
         </div>
 
+        <div class="nav">
+            <a href="menu.php">
+                <i class="fa fa-house"></i>
+            </a>
+
+            <a href="#">
+                <i class="fa fa-cart-shopping"></i>
+            </a>
+
+            <a href="logout.php">
+                <i class="fa fa-right-from-bracket"></i>
+            </a>
+        </div>
     </div>
-
-    <div class="nav">
-
-        <i class="fa fa-house"></i>
-
-        <i class="fa fa-heart"></i>
-
-        <i class="fa fa-cart-shopping"></i>
-
-        <i class="fa fa-bell"></i>
-
-    </div>
-
-</div>
 
 </body>
+
 </html>

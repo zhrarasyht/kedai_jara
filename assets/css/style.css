@@ -2,18 +2,19 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 body{
-    background:#d9d9d9;
-    display:flex;
-    justify-content:center;
+    background:#f5efe4;
+    min-height:100vh;
 }
 
+/*BENTUK*/
+
 .hp{
-    width:360px;
-    height:740px;
+    width:100%;
+    min-height:100vh;
     background:#f5efe4;
     position:relative;
     overflow:hidden;
@@ -21,11 +22,10 @@ body{
     flex-direction:column;
 }
 
-/* ================= INDEX ================= */
-
+/*INDEX*/
 .atas{
     width:100%;
-    height:100%;
+    min-height:100vh;
     background:#66754b;
     border-bottom-left-radius:120px;
     border-bottom-right-radius:120px;
@@ -51,6 +51,7 @@ body{
     color:#eee;
     margin-top:10px;
     font-size:11px;
+    line-height:18px;
 }
 
 .btn{
@@ -65,8 +66,7 @@ body{
     font-weight:bold;
 }
 
-/* ================= LOGIN ================= */
-
+/*LOGIN*/
 .login-atas{
     width:100%;
     height:260px;
@@ -113,6 +113,7 @@ label{
     outline:none;
     margin-left:10px;
     width:100%;
+    background:none;
 }
 
 button{
@@ -123,10 +124,10 @@ button{
     color:#66754b;
     border-radius:30px;
     font-weight:bold;
+    cursor:pointer;
 }
 
-/* ================= HEADER ================= */
-
+/*HEADER*/
 .header{
     width:100%;
     height:180px;
@@ -144,24 +145,25 @@ button{
     font-size:22px;
 }
 
-.cart{
-    float:right;
+.notif{
+    position:absolute;
+    right:20px;
+    top:20px;
+    color:white;
+    font-size:20px;
 }
 
-/* ================= MENU ================= */
-
+/*MENU*/
 .menu{
     padding:20px;
     flex:1;
     overflow:auto;
-    padding-bottom:80px;
+    padding-bottom:90px;
 }
 
-/* ================= CARD ================= */
-
+/*CARD*/
 .card{
     width:100%;
-    height:100px;
     background:white;
     border-radius:20px;
     margin-bottom:15px;
@@ -186,6 +188,7 @@ button{
 .isi h3{
     color:#66754b;
     margin-bottom:5px;
+    font-size:17px;
 }
 
 .isi p{
@@ -205,8 +208,7 @@ button{
     color:#66754b;
 }
 
-/* ================= DETAIL ================= */
-
+/*DETAIL*/
 .gambar{
     width:170px;
     height:170px;
@@ -243,20 +245,6 @@ button{
     margin-bottom:35px;
 }
 
-.qty{
-    width:95px;
-    height:32px;
-    background:#a7b388;
-    border-radius:20px;
-    display:flex;
-    justify-content:space-around;
-    align-items:center;
-    color:white;
-    margin:auto;
-    margin-bottom:50px;
-    font-weight:bold;
-}
-
 .checkout{
     width:180px;
     height:45px;
@@ -269,17 +257,17 @@ button{
     align-items:center;
     margin:auto;
     font-size:12px;
+    font-weight:bold;
 }
 
-/* ================= ORDER ================= */
-
+/*ORDER*/
 .order{
     flex:1;
     display:flex;
     flex-direction:column;
     padding:20px;
-    position: relative;
-    top: -60px;
+    position:relative;
+    top:10px;
 }
 
 .box{
@@ -290,7 +278,7 @@ button{
     display:flex;
     align-items:center;
     gap:12px;
-    margin-bottom:10px;
+    margin-bottom:15px;
 }
 
 .box img{
@@ -315,8 +303,6 @@ button{
     font-size:13px;
 }
 
-/* ================= QTY ORDER (DIPERBAIKI) ================= */
-
 .qty-order{
     width:95px;
     height:32px;
@@ -333,20 +319,12 @@ button{
 .qty-order span{
     cursor:pointer;
     font-size:16px;
-    font-weight:bold;
     user-select:none;
 }
-
-.qty-order .nilai{
-    font-size:14px;
-}
-
-/* ================= TOTAL (GARIS + HARGA) ================= */
 
 .total{
     margin-top:30px;
     padding-top:15px;
-    padding-bottom:10px;
     border-top:2px solid #b7c29a;
     display:flex;
     justify-content:space-between;
@@ -354,15 +332,12 @@ button{
     color:#66754b;
     font-weight:bold;
     font-size:16px;
-    margin-bottom:0;
 }
 
 .total-harga{
     font-size:18px;
     color:#3e4a2e;
 }
-
-/* ================= CHECKOUT BUTTON (LEBIH BAWAH LAGI) ================= */
 
 .checkout-order{
     width:180px;
@@ -374,23 +349,14 @@ button{
     display:flex;
     justify-content:center;
     align-items:center;
-    margin-top:100px;
-    margin-bottom:80px;
-    margin-left:auto;
-    margin-right:auto;
+    margin:90px auto 80px;
     font-size:13px;
     font-weight:bold;
     border:none;
     cursor:pointer;
-    box-shadow:0 4px 10px rgba(0,0,0,0.1);
 }
 
-.checkout-order:hover{
-    background:#8b9a65;
-}
-
-/* ================= SUCCESS ================= */
-
+/*SUCCESS*/
 .sukses{
     text-align:center;
     padding-top:140px;
@@ -412,30 +378,24 @@ button{
 .sukses p{
     margin-top:20px;
     color:#66754b;
+    line-height:22px;
 }
 
-/* ================= NAVBAR ================= */
-
+/*NAVBAR*/
 .nav{
     width:100%;
     height:60px;
     background:#66754b;
-    position:absolute;
+    position:fixed;
     bottom:0;
+    left:0;
     display:flex;
     justify-content:space-around;
     align-items:center;
 }
 
-.nav i{
+.nav a{
     color:white;
-    font-size:18px;
-}
-
-.logout{
-    color:white;
-    float:right;
-    margin-right:15px;
     text-decoration:none;
-    font-size:18px;
+    font-size:20px;
 }
